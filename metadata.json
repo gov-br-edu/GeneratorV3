@@ -1,0 +1,5 @@
+{
+  "name": "Student ID Generator",
+  "description": "A web application to generate and print student ID cards with real-time preview.",
+  "requestFramePermissions": []
+}
