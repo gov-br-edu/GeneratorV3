@@ -12,13 +12,12 @@ interface IDCardProps {
 
 export const CardFront: React.FC<IDCardProps> = ({ data }) => {
   return (
-    <div id="card-front" className="w-[400px] h-[252px] bg-gray-100 relative overflow-hidden shadow-lg rounded-lg flex-shrink-0 print:shadow-none">
+    <div id="card-front" className="w-[400px] h-[252px] bg-gray-100 relative overflow-hidden shadow-lg rounded-lg flex-shrink-0 print:shadow-none border-[0.5px] border-black">
       {/* Background decoration - Green shape top left */}
       <div className="absolute top-0 left-0 w-32 h-32 bg-green-600"></div>
       <div className="absolute top-[80px] left-[80px] w-10 h-10 bg-green-600 transform rotate-45"></div>
 
       {/* Main White Content Area */}
-      {/* Fixed: Adjusted margins (top-35, left-15) and flex layout to ensure footer fits */}
       <div className="absolute top-[35px] left-[15px] right-0 bottom-0 bg-white shadow-sm z-10 flex flex-col">
         
         {/* Header */}
@@ -32,7 +31,6 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
         </div>
 
         {/* Content Body */}
-        {/* Fixed: Changed 'h-full' to 'flex-1' to prevent pushing content out of view due to Header height */}
         <div className="flex px-6 pt-1 flex-1 relative">
             {/* Photo Area */}
             <div className="w-24 h-32 bg-gray-200 flex-shrink-0 border-4 border-white shadow-sm -ml-8 -mt-2 relative z-20">
@@ -46,7 +44,8 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
             </div>
 
             {/* Text Details */}
-            <div className="flex flex-col flex-grow pl-4 pt-1 space-y-1">
+            {/* Reduced space-y to pull elements tighter */}
+            <div className="flex flex-col flex-grow pl-4 pt-1 space-y-0.5">
                 <div className="flex flex-col">
                     <span className="text-[9px] font-bold text-gray-500 uppercase">Nome</span>
                     <span className="text-xs font-bold text-gray-900 uppercase truncate leading-normal pb-1 w-56">
@@ -74,9 +73,10 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
                 </div>
 
                 {/* Footer Section: Identity Text & Validity Box */}
-                {/* Updated: Increased bottom padding (pb-9) and adjusted validity box top position (-top-3) to move everything up more */}
-                <div className="flex justify-between items-end mt-auto w-full pb-9 pr-2">
-                     <div className="flex flex-col pb-1">
+                {/* Updated: Changed items-end to items-start so the text doesn't sink if the box is tall.
+                    Added -mt-2 to pull the whole row up closer to Matricula. */}
+                <div className="flex justify-between items-start -mt-2 w-full pr-2 relative">
+                     <div className="flex flex-col pt-1">
                         <span className="text-[10px] font-extrabold text-gray-700 uppercase tracking-tighter">Identidade Estudantil</span>
                      </div>
 
@@ -97,7 +97,7 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
 
 export const CardBack: React.FC<IDCardProps> = ({ data }) => {
   return (
-    <div id="card-back" className="w-[400px] h-[252px] bg-gray-100 relative overflow-hidden shadow-lg rounded-lg flex-shrink-0 print:shadow-none flex">
+    <div id="card-back" className="w-[400px] h-[252px] bg-gray-100 relative overflow-hidden shadow-lg rounded-lg flex-shrink-0 print:shadow-none flex border-[0.5px] border-black">
         {/* Left Content (White) */}
         <div className="flex-grow bg-[#eeeeee] p-5 flex flex-col justify-between relative">
             
