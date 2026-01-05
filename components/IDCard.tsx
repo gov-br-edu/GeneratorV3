@@ -74,13 +74,13 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
                 </div>
 
                 {/* Footer Section: Identity Text & Validity Box */}
-                {/* Updated: Increased bottom padding (pb-5) and adjusted validity box top position (-top-1) to move everything up */}
-                <div className="flex justify-between items-end mt-auto w-full pb-5 pr-2">
+                {/* Updated: Increased bottom padding (pb-9) and adjusted validity box top position (-top-3) to move everything up more */}
+                <div className="flex justify-between items-end mt-auto w-full pb-9 pr-2">
                      <div className="flex flex-col pb-1">
                         <span className="text-[10px] font-extrabold text-gray-700 uppercase tracking-tighter">Identidade Estudantil</span>
                      </div>
 
-                     <div className="flex flex-col items-center relative -right-4 -top-1">
+                     <div className="flex flex-col items-center relative -right-4 -top-3">
                          {/* Red Validity Box */}
                          <div className="bg-[#cc3333] text-white px-3 py-1 flex flex-col items-center justify-center shadow-md w-28">
                             <span className="text-[8px] font-medium opacity-90">VALIDADE</span>
