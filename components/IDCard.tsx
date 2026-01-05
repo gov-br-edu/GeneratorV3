@@ -18,7 +18,8 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
       <div className="absolute top-[80px] left-[80px] w-10 h-10 bg-green-600 transform rotate-45"></div>
 
       {/* Main White Content Area */}
-      <div className="absolute top-[40px] left-[20px] right-0 bottom-0 bg-white shadow-sm z-10 flex flex-col">
+      {/* Fixed: Adjusted margins (top-35, left-15) and flex layout to ensure footer fits */}
+      <div className="absolute top-[35px] left-[15px] right-0 bottom-0 bg-white shadow-sm z-10 flex flex-col">
         
         {/* Header */}
         <div className="flex items-center gap-3 p-4 pb-2">
@@ -31,9 +32,10 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
         </div>
 
         {/* Content Body */}
-        <div className="flex px-6 pt-2 h-full relative">
-            {/* Photo Area (Floating Left slightly outside this container visually in the reference, but we keep inside for structure) */}
-            <div className="w-24 h-32 bg-gray-200 flex-shrink-0 border-4 border-white shadow-sm -ml-8 -mt-4 relative z-20">
+        {/* Fixed: Changed 'h-full' to 'flex-1' to prevent pushing content out of view due to Header height */}
+        <div className="flex px-6 pt-1 flex-1 relative">
+            {/* Photo Area */}
+            <div className="w-24 h-32 bg-gray-200 flex-shrink-0 border-4 border-white shadow-sm -ml-8 -mt-2 relative z-20">
                 {data.photoUrl ? (
                     <img src={data.photoUrl} alt="Student" className="w-full h-full object-cover" />
                 ) : (
@@ -44,10 +46,9 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
             </div>
 
             {/* Text Details */}
-            <div className="flex flex-col flex-grow pl-4 pt-1 space-y-2">
+            <div className="flex flex-col flex-grow pl-4 pt-1 space-y-1">
                 <div className="flex flex-col">
                     <span className="text-[9px] font-bold text-gray-500 uppercase">Nome</span>
-                    {/* Fixed: Added leading-normal and pb-1 to prevent html2canvas clipping text */}
                     <span className="text-xs font-bold text-gray-900 uppercase truncate leading-normal pb-1 w-56">
                         {data.fullName || "NOME DO ESTUDANTE"}
                     </span>
@@ -72,8 +73,14 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
                      </div>
                 </div>
 
-                <div className="flex justify-end items-end mt-auto w-full">
-                     <div className="flex flex-col items-center relative -right-6 bottom-4">
+                {/* Footer Section: Identity Text & Validity Box */}
+                {/* Repositioned to ensure it sits at the bottom of the FLEX container without overflowing */}
+                <div className="flex justify-between items-end mt-auto w-full pb-3 pr-2">
+                     <div className="flex flex-col pb-1">
+                        <span className="text-[10px] font-extrabold text-gray-700 uppercase tracking-tighter">Identidade Estudantil</span>
+                     </div>
+
+                     <div className="flex flex-col items-center relative -right-4 top-1">
                          {/* Red Validity Box */}
                          <div className="bg-[#cc3333] text-white px-3 py-1 flex flex-col items-center justify-center shadow-md w-28">
                             <span className="text-[8px] font-medium opacity-90">VALIDADE</span>
@@ -83,11 +90,6 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
                 </div>
             </div>
         </div>
-      </div>
-      
-      {/* Bottom Text */}
-      <div className="absolute bottom-4 left-8 z-20">
-         <span className="text-xs font-extrabold text-gray-700 uppercase tracking-tighter">Identidade Estudantil</span>
       </div>
     </div>
   );
@@ -103,7 +105,6 @@ export const CardBack: React.FC<IDCardProps> = ({ data }) => {
                 {/* Name */}
                 <div className="flex flex-col">
                     <span className="text-[8px] font-bold text-gray-500 uppercase">Nome</span>
-                    {/* Fixed: Added leading-normal and pb-1 to prevent html2canvas clipping text */}
                     <span className="text-[10px] font-bold text-gray-900 uppercase truncate leading-normal pb-1">
                         {data.fullName || "SEU NOME COMPLETO"}
                     </span>
