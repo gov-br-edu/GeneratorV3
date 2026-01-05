@@ -18,7 +18,7 @@ export const CardFront: React.FC<IDCardProps> = ({ data }) => {
       <div className="absolute top-[80px] left-[80px] w-10 h-10 bg-green-600 transform rotate-45"></div>
 
       {/* Main White Content Area */}
-      <div className="absolute inset-0 bg-white ml-[20px] mt-[40px] shadow-sm z-10 flex flex-col">
+      <div className="absolute top-[40px] left-[20px] right-0 bottom-0 bg-white shadow-sm z-10 flex flex-col">
         
         {/* Header */}
         <div className="flex items-center gap-3 p-4 pb-2">
